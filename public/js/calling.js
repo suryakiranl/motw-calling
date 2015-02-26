@@ -22,11 +22,13 @@ $(document).ready(function() {
     dialDestination = NO_NUMBER_PROVIDED;
   }
 
+  console.log("** Dial Using = " + dialUsing);
+  console.log("** Dial Destination = " + dialDestination);
+
   // Based on dial option - prepare the div
   var randomNumber = Math.floor( (Math.random() * 10 * 7) + 1 );
-  var scriptSrc, divTag, scriptBody;
+  var divTag, scriptBody;
   if(dialUsing == dialingOptions.GOOGLE_HANGOUT) {
-    scriptSrc = "https://apis.google.com/js/platform.js";
     var gHangoutDivId = "gh-" + randomNumber;
     divTag = "<div id='" + gHangoutDivId + "'></div>";
     scriptBody = "gapi.hangout.render('" + gHangoutDivId+ "'," +
@@ -35,7 +37,6 @@ $(document).ready(function() {
       "'invites': [{ 'id' : '" + dialDestination + "', 'invite_type' : 'PHONE' }]" +
       " } );";
   } else if(dialUsing == dialingOptions.SKYPE) {
-    scriptSrc = "http://www.skypeassets.com/i/scom/js/skype-uri.js";
     var skypeDivId = "SkypeButton_Call_" + randomNumber;
     divTag = "<div id='" + skypeDivId + "'></div>";
     scriptBody = 'Skype.ui({ name : "call", element : "' + skypeDivId + '",' +
@@ -50,7 +51,6 @@ $(document).ready(function() {
   }
 
   $("#callingWrapper").append(divTag);
-  $('<script>').attr('type','text/javascript').attr('src', scriptSrc).appendTo('head');
   $('<script>').attr('type','text/javascript').text(scriptBody).appendTo('head');
 
 });
