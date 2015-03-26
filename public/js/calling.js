@@ -41,6 +41,8 @@ $(document).ready(function() {
     divTag = "<div id='" + skypeDivId + "'></div>";
     scriptBody = 'Skype.ui({ name : "call", element : "' + skypeDivId + '",' +
       ' participants : ["' + dialDestination + '"], imageSize: 32 });';
+
+    $("#callingWrapper").addClass('skype-icon');
   } else {
     divTag = "Invalid calling option provided. Valid values are : " +
       dialingOptions.GOOGLE_HANGOUT + ", " + dialingOptions.SKYPE;
