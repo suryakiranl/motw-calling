@@ -11,9 +11,6 @@ $(document).ready(function() {
   var dialUsing = getUrlParameter("dial_using");
   var dialDestination = getUrlParameter("dial_destination");
 
-  console.log("Dial Using = " + dialUsing);
-  console.log("Dial Destination = " + dialDestination);
-
   // Perform basic null or empty check
   if(dialUsing == "" || dialUsing == null) {
     dialUsing = dialingOptions.GOOGLE_HANGOUT;
@@ -22,8 +19,8 @@ $(document).ready(function() {
     dialDestination = NO_NUMBER_PROVIDED;
   }
 
-  console.log("** Dial Using = " + dialUsing);
-  console.log("** Dial Destination = " + dialDestination);
+  console.log("** Dial Using = " + dialUsing +
+    ", Dial Destination = " + dialDestination);
 
   // Based on dial option - prepare the div
   var randomNumber = Math.floor( (Math.random() * 10 * 7) + 1 );
